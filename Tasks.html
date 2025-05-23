@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>مهام شركة مارس</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', Arial, sans-serif; background: linear-gradient(135deg, #f4f4f4 60%, #e0e7ff 100%); margin: 0; }
+        header { background: linear-gradient(90deg, #2d2d86 60%, #4f4fc4 100%); color: #fff; padding: 30px 20px 20px 20px; text-align: center; border-radius: 0 0 30px 30px; box-shadow: 0 4px 12px #0002; }
+        nav { background: #fff; padding: 10px 0; box-shadow: 0 2px 4px #0001; }
+        .container { max-width: 650px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 16px #0002; padding: 40px 30px; }
+        label { font-weight: bold; font-size: 1.1em; }
+        select { padding: 10px; margin: 14px 0 24px 0; width: 100%; border-radius: 6px; border: 1px solid #bfc4ff; font-size: 1em; background: #f7f8ff; }
+        ul { list-style: none; padding: 0; }
+        li { background: linear-gradient(90deg, #e9e9ff 80%, #d1d8ff 100%); margin: 10px 0; padding: 15px 18px; border-radius: 8px; font-size: 1.07em; box-shadow: 0 2px 6px #0001; transition: background 0.2s; }
+        li:hover { background: linear-gradient(90deg, #d1d8ff 80%, #e9e9ff 100%); }
+        .no-tasks { color: #888; text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body dir="rtl">
+    <header>
+        <h1>مهام شركة مارس</h1>
+        <p>تابع مهام الموظفين اليومية بسهولة</p>
+    </header>
+    <nav>
+        <!-- روابط مستقبلية -->
+    </nav>
+    <div class="container">
+        <label for="employee">اختر اسم الموظف:</label>
+        <select id="employee">
+            <option value="">-- اختر --</option>
+            <option value="mohamed">محمد حسين</option>
+            <option value="sara">سارة علي</option>
+            <option value="ahmed">أحمد سمير</option>
+            <option value="eman">إيمان مصطفى</option>
+            <option value="khaled">خالد عبد الله</option>
+            <option value="fatma">فاطمة يوسف</option>
+            <option value="youssef">يوسف إبراهيم</option>
+            <option value="rana">رنا محمد</option>
+            <option value="hossam">حسام محمود</option>
+            <option value="dina">دينا سعيد</option>
+        </select>
+        <ul id="tasks"></ul>
+    </div>
+    <script>
+        const tasksData = {
+            mohamed: [
+                "مراجعة التقارير",
+                "اجتماع مع الفريق",
+                "تحديث قاعدة البيانات",
+                "إعداد خطة الأسبوع"
+            ],
+            sara: [
+                "تصميم واجهة جديدة",
+                "مراجعة الكود",
+                "تجهيز العرض التقديمي",
+                "تنسيق مع قسم التسويق"
+            ],
+            ahmed: [
+                "متابعة العملاء",
+                "إرسال الفواتير",
+                "تحديث الموقع",
+                "إعداد تقرير شهري"
+            ],
+            eman: [
+                "كتابة محتوى الموقع",
+                "مراجعة المقالات",
+                "تنسيق مع المصممين",
+                "جدولة المنشورات"
+            ],
+            khaled: [
+                "إدارة المخزون",
+                "طلب مستلزمات جديدة",
+                "تحديث بيانات الموردين",
+                "مراجعة الفواتير"
+            ],
+            fatma: [
+                "إعداد رواتب الموظفين",
+                "مراجعة الحضور والانصراف",
+                "تنظيم ملفات الموارد البشرية",
+                "جدولة مقابلات التوظيف"
+            ],
+            youssef: [
+                "دعم فني للعملاء",
+                "حل المشكلات التقنية",
+                "تحديث دليل المستخدم",
+                "تجربة الأنظمة الجديدة"
+            ],
+            rana: [
+                "تحليل بيانات المبيعات",
+                "إعداد تقارير الأداء",
+                "مقارنة الأسعار مع المنافسين",
+                "تقديم اقتراحات تطوير"
+            ],
+            hossam: [
+                "إدارة الحملات الإعلانية",
+                "متابعة نتائج الحملات",
+                "التواصل مع الوكالات",
+                "تجهيز مواد إعلانية"
+            ],
+            dina: [
+                "تنظيم الاجتماعات",
+                "إعداد محاضر الاجتماعات",
+                "متابعة تنفيذ القرارات",
+                "تنسيق جدول المدير"
+            ]
+        };
+
+        const employeeSelect = document.getElementById('employee');
+        const tasksList = document.getElementById('tasks');
+
+        employeeSelect.addEventListener('change', function() {
+            const name = this.value;
+            tasksList.innerHTML = '';
+            if (tasksData[name]) {
+                tasksData[name].forEach(task => {
+                    const li = document.createElement('li');
+                    li.textContent = task;
+                    tasksList.appendChild(li);
+                });
+            } else if (name) {
+                const li = document.createElement('li');
+                li.className = 'no-tasks';
+                li.textContent = "لا توجد مهام حالياً لهذا الموظف.";
+                tasksList.appendChild(li);
+            }
+        });
+    </script>
+</body>
+</html>
+d
